@@ -86,7 +86,7 @@ export class AnimeService {
         const jsonOptions = JSON.stringify(options);
 
         options.headers = this.headers;
-        
+
         const cache = this.cacheMemoryService.get(jsonOptions);
 
         if (cache) {
@@ -103,7 +103,7 @@ export class AnimeService {
         );
     }
 
-    getAnimeById(id: number): Observable<{ Media: AnimeFull }> {
+    getAnimeById(id: number): Observable<AnimeFull> {
         const query = `
                     query ($id: Int) {
                         Media(id: $id) {
@@ -140,7 +140,7 @@ export class AnimeService {
         };
 
         return this.http.post(url, options).pipe(
-            map((response: any) => response.data),
+            map((response: any) => response.data.Media),
             catchError(this.handleError)
         );
     }

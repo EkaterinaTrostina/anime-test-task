@@ -15,7 +15,6 @@
 
         margin-bottom: 40px;
 
-        width: fit-content;
         max-width: 700px;
 
         display: grid;
@@ -27,9 +26,11 @@
         display: flex;
         align-items: baseline;
 
+        width: fit-content;
+
         font-weight: 400;
         font-size: 16px;
-        line-height: 24;
+        line-height: 24px;
 
         &--big {
             grid-column: 1/3;

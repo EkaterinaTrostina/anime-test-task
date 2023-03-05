@@ -40,8 +40,8 @@ export class AnimeCardComponent implements OnInit {
         this.isLoading = true;
 
         this.animeService.getAnimeById(this.animeId).subscribe((anime) => {
-            this.anime = anime.Media;
-            this.staff = this.getStaffToString(anime.Media.staff);
+            this.anime = anime;
+            this.staff = this.getStaffToString(anime.staff);
 
             this.isLoading = false;
             this.changeDetectorRef.detectChanges();
