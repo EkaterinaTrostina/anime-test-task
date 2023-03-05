@@ -1,0 +1,54 @@
+@import "../../../../assets/styles/variables";
+
+.input-item {
+    position: relative;
+
+    &__label {
+        position: absolute;
+
+        bottom: 7px;
+        left: 0;
+
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 400;
+
+        color: $placholder-color;
+
+        pointer-events: none;
+
+        transition: top 0.2s, transform 0.2s, font-size 0.2s, line-height 0.2s;
+
+        &--floating {
+            top: 0;
+            transform: translateY(-70%);
+
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+
+    &__input {
+        width: 100%;
+
+        padding-bottom: 7px;
+
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 400;
+
+        outline: none;
+        border: none;
+
+        caret-color: #347cff;
+        color: rgba(0, 0, 0, 0.87);
+
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+        transition: border-color 0.2s;
+
+        &:focus {
+            border-color: #347cff;
+        }
+    }
+}

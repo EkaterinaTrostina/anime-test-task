@@ -1,0 +1,35 @@
+<article class="anime-card" [ngClass]="{ preloader: isLoading }">
+    <ng-container *ngIf="anime">
+        <h1 class="anime-card__title main-title">{{ anime.title.romaji }}</h1>
+
+        <ul class="anime-card__list">
+            <li class="anime-card__item" *ngIf="anime.type">
+                <span class="anime-card__item-label">Тип</span>
+                <span class="anime-card__item-value">{{ anime.type }}</span>
+            </li>
+            <li class="anime-card__item" *ngIf="anime.format">
+                <span class="anime-card__item-label">Формат</span>
+                <span class="anime-card__item-value">
+                    {{ anime.format }}
+                </span>
+            </li>
+            <li class="anime-card__item" *ngIf="anime.seasonYear">
+                <span class="anime-card__item-label">Год</span>
+                <span class="anime-card__item-value">
+                    {{ anime.seasonYear }}
+                </span>
+            </li>
+            <li class="anime-card__item" *ngIf="anime.episodes">
+                <span class="anime-card__item-label"> Эпизоды</span>
+                <span class="anime-card__item-value">
+                    {{ anime.episodes }}
+                </span>
+            </li>
+
+            <li class="anime-card__item--big anime-card__item" *ngIf="staff">
+                <span class="anime-card__item-label">Сотрудники</span>
+                <span class="anime-card__item-value"> {{ staff }}</span>
+            </li>
+        </ul>
+    </ng-container>
+</article>

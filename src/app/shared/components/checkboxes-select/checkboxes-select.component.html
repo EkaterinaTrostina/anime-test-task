@@ -1,0 +1,31 @@
+<div class="checkboxes-select">
+    <div
+        class="checkboxes-select__head"
+        [ngClass]="{ 'checkboxes-select__head--active': isOpenList }"
+        (click)="toggleList()"
+    >
+        <span class="checkboxes-select__placeholder" *ngIf="placeholder">
+            {{ placeholder }}
+        </span>
+
+        <span class="checkboxes-select__info">
+            Выбраны {{ selectedCount }}</span
+        >
+    </div>
+
+    <ul class="checkboxes-select__list" *ngIf="isOpenList">
+        <li class="checkboxes-select__item" *ngFor="let option of optionsList">
+            <label class="checkboxes-select__item-label">
+                <input
+                    class="checkboxes-select__item-checkbox"
+                    type="checkbox"
+                    [value]="option.value"
+                    [(ngModel)]="option.isChecked"
+                    (ngModelChange)="change()"
+                />
+                <span class="checkboxes-select__item-checkmark"> </span>
+                {{ option.label }}
+            </label>
+        </li>
+    </ul>
+</div>

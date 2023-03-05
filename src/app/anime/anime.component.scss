@@ -1,0 +1,31 @@
+@import '../../assets/styles/components/title.scss';
+@import '../../assets/styles/mixins';
+
+.anime {
+    &__container {
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__backward {
+        margin-bottom: 22px;
+
+        display: inline-flex;
+        align-items: center;
+        
+        color: $main-link-color;
+        
+        text-decoration: none;
+    }
+
+    &__backward-icon {
+        margin-right: 8px;
+    }
+
+    &__card {
+        display: block;
+        flex: 1;
+    }
+}

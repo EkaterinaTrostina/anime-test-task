@@ -1,0 +1,25 @@
+<section class="animes" [ngClass]=" {'preloader': isLoading}">
+    <div class="animes__container">
+        <div class="animes__main container">
+            <h1 class="animes__title main-title">AniList</h1>
+            <ng-container *ngIf="(animeList || []).length  !== 0">
+                <ul class="animes__list">
+                    <li class="animes__item" *ngFor="let anime of animeList">
+                        <app-animes-item [anime]="anime"></app-animes-item>
+                    </li>
+                </ul>
+                <app-pagination
+                    [(page)]="page"
+                    (pageChange)="updateUrl()"
+                    [hasNextPage]="hasNextPage"
+                ></app-pagination>
+            </ng-container>
+        </div>
+
+        <app-animes-filters
+            class="animes__filters"
+            [(filters)]="filters"
+            (filtersChange)="setFilter()"
+        ></app-animes-filters>
+    </div>
+</section>

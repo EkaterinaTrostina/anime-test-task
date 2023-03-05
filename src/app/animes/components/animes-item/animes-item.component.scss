@@ -1,0 +1,55 @@
+@import '../../../../assets/styles/mixins';
+@import '../../../../assets/styles/variables';
+
+.anime-info {
+    display: flex;
+    flex-direction: column;
+
+    border-bottom: 1px solid $border-color;
+
+    &__head {
+        margin-bottom: 29px;
+
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        margin-right: 23px;
+    }
+
+    &__link {
+        display: inline-flex;
+
+        color: $main-link-color;
+    }
+
+    &__list {
+        @include list-reset;
+
+        margin-bottom: 29px;
+
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    &__item {
+        display: flex;
+        align-items: baseline;
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    &__item-label {
+        margin-right: 104px;
+
+        color: $main-text-color;
+    }
+
+    &__item-value {
+        color: $information-text-color;
+    }
+
+}

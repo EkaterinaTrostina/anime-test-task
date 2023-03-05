@@ -1,0 +1,41 @@
+@import '../../assets/styles/components/title.scss';
+@import '../../assets/styles/mixins';
+
+.animes {
+    &__container {
+        display: flex;
+    }
+
+    &__main {
+        flex: 1 0 auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__filters {
+        flex: 0 0 393px;
+
+        min-height: 100vh;
+    }
+
+    &__title {
+        margin-bottom: 64px;
+    }
+
+    &__list {
+        @include list-reset;
+
+        margin-bottom: 52px;
+
+        flex: 1 0 auto;
+    }
+
+    &__item {
+        margin-bottom: 40px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<div class="input-item">
+    <input
+        #textInputControl
+        class="input-item__input"
+        type="text"
+        [name]="name"
+        [formControl]="inputControl"
+    />
+    <label
+        *ngIf="label"
+        class="input-item__label"
+        for="name"
+        [ngClass]="{
+            'input-item__label--floating': textInputControl.value.length > 0
+        }"
+    >
+        {{ label }}</label
+    >
+</div>

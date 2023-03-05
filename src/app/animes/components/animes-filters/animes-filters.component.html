@@ -1,0 +1,30 @@
+<div class="filters">
+    <span class="filters__title">Фильтры</span>
+
+    <form class="filters__form">
+        <app-input
+            class="filters__input"
+            [label]="searchNamePlacholder"
+            [(ngModel)]="filters.searchName"
+            (ngModelChange)="emitFilters()"
+            [name]="searchNamePlacholder"
+        ></app-input>
+
+        <app-checkboxes-select
+            class="filters__checkboxes"
+            [placeholder]="formatsPlacholder"
+            [(ngModel)]="formatsList"
+            (ngModelChange)="updateSelectedFormats()"
+            [name]="formatsPlacholder"
+        >
+        </app-checkboxes-select>
+
+        <app-radio-select
+            [optionsList]="radioStatusList"
+            [placeholder]="statusPlacholder"
+            [(ngModel)]="filters.selectedStatus"
+            (ngModelChange)="emitFilters()"
+            [name]="statusPlacholder"
+        ></app-radio-select>
+    </form>
+</div>

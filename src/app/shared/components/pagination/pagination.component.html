@@ -1,0 +1,15 @@
+<div class="pagination">
+    <button
+        class="pagination__prev"
+        [disabled]="page === 1"
+        aria-label="Go To Previous Page"
+        (click)="pageChangeValue(-1)"
+    ></button>
+    <span class="pagination__number">{{ page }}</span>
+    <button
+        class="pagination__next"
+        [disabled]="!hasNextPage"
+        aria-label="Go To Next Page"
+        (click)="pageChangeValue(1)"
+    ></button>
+</div>

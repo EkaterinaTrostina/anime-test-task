@@ -1,0 +1,19 @@
+<div class="radio-select">
+    <span class="radio-select__placeholder" *ngIf="placeholder">{{ placeholder }}</span>
+
+    <ul class="radio-select__list">
+        <li class="radio-select__item" *ngFor="let option of optionsList">
+            <label class="radio-select__item-label">
+                <input
+                    class="radio-select__item-input"
+                    type="radio"
+                    [value]="option.value"
+                    [ngModel]="value"
+                    (ngModelChange)="change($event)"
+                />
+                <span class="radio-select__item-checkmark"></span>
+                {{ option.label }}
+            </label>
+        </li>
+    </ul>
+</div>
