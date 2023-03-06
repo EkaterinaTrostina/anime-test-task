@@ -81,12 +81,18 @@ export class AnimesComponent implements OnInit {
 
         const filters = this.getAllFiltes();
 
-        this.animeService.getAnimeList(filters).subscribe((res) => {
-            this.animeList = res.Page.media;
-            this.hasNextPage = res.Page.pageInfo.hasNextPage;
-
-            this.isLoading = false;
-            this.changeDetectorRef.detectChanges();
+        this.animeService.getAnimeList(filters).subscribe({
+            next: (res) => {
+                this.animeList = res.Page.media;
+                this.hasNextPage = res.Page.pageInfo.hasNextPage;
+                this.isLoading = false;
+                this.changeDetectorRef.detectChanges();
+            },
+            error: (e) => {
+                console.error(e);
+                this.isLoading = false;
+                this.changeDetectorRef.detectChanges();
+            }
         });
     }
 

@@ -9,7 +9,7 @@ const routes: Routes = [
             import('./animes/animes.module').then((m) => m.AnimesModule),
     },
     {
-        path: 'anime/:id',
+        path: 'anime',
         loadChildren: () =>
             import('./anime/anime.module').then((m) => m.AnimeModule),
     },

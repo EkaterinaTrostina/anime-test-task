@@ -39,12 +39,18 @@ export class AnimeCardComponent implements OnInit {
     async loadAnime() {
         this.isLoading = true;
 
-        this.animeService.getAnimeById(this.animeId).subscribe((anime) => {
-            this.anime = anime;
-            this.staff = this.getStaffToString(anime.staff);
-
-            this.isLoading = false;
-            this.changeDetectorRef.detectChanges();
+        this.animeService.getAnimeById(this.animeId).subscribe({
+            next: (anime) => {
+                this.anime = anime;
+                this.staff = this.getStaffToString(anime.staff);
+                this.isLoading = false;
+                this.changeDetectorRef.detectChanges();
+            },
+            error: (e) => {
+                console.error(e);
+                this.isLoading = false;
+                this.changeDetectorRef.detectChanges();
+            },
         });
     }
 
