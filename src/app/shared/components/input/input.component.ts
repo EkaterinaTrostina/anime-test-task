@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import {
     ControlValueAccessor,
     FormControl,
     NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { debounceTime, pairwise } from 'rxjs';
+import { debounceTime, pairwise, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-input',
@@ -18,10 +18,11 @@ import { debounceTime, pairwise } from 'rxjs';
         },
     ],
 })
-export class InputComponent implements ControlValueAccessor, OnInit {
+export class InputComponent implements ControlValueAccessor, OnInit, OnDestroy {
     @Input() label: string;
     @Input() name: string;
 
+    subscription: Subscription;
     inputControl = new FormControl();
 
     onChange = (value: any) => {};
@@ -39,8 +40,13 @@ export class InputComponent implements ControlValueAccessor, OnInit {
         this.onTouched = fn;
     }
 
+    change(value: string | null) {
+        this.onChange(value);
+        this.onTouched(value);
+    }
+
     ngOnInit(): void {
-        this.inputControl.valueChanges
+        this.subscription = this.inputControl.valueChanges
             .pipe(debounceTime(500), pairwise())
             .subscribe(([prev, cur]) => {
                 if (prev !== cur) {
@@ -49,8 +55,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
             });
     }
 
-    change(value: string | null) {
-        this.onChange(value);
-        this.onTouched(value);
+    ngOnDestroy(): void {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 }

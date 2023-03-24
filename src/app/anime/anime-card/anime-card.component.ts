@@ -29,11 +29,8 @@ export class AnimeCardComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.activatedRoute.params.subscribe((params) => {
-            this.animeId = +params['id'];
-
-            this.loadAnime();
-        });
+        this.animeId = +this.activatedRoute.snapshot.params['id'];
+        this.loadAnime();
     }
 
     async loadAnime() {
